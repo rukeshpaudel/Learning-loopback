@@ -17,7 +17,7 @@ const config={
 
 
     constructor(
-    @inject('datasources.config.db',{required: false})    
+    @inject('datasources.config.db',{optional: true})    
     dsConfig: object = config,    
     )
     {
