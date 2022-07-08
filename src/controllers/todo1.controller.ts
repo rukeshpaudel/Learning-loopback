@@ -54,4 +54,75 @@ export class TodoController {
   async find(@param.filter(Task) filter: Filter<Task>): Promise<Task[]> {
     return this.todoRepository.find(filter);
   }
+
+
+  @get('/todos/{id}')
+  @response(200, {
+    description: 'Todo model instance',
+    content: {
+      'application/json': {
+        schema: getModelSchemaRef(Task, {includeRelations: true}),
+      },
+    },
+  })
+  async findById(
+    @param.path.number('id') id: number,
+    @param.filter(Task, {exclude: 'where'}) filter?: FilterExcludingWhere<Task>
+  ): Promise<Task> {
+    return this.todoRepository.findById(id, filter);
+  }
+
+  @post('/todos')
+  @response(200,{
+    description: 'Post Task',
+    content: {
+      'application/json' :{
+        schema: getModelSchemaRef(Task)}}
+      })
+
+async create(
+  @requestBody({
+    content: {
+      'application/json': {
+        schema: getModelSchemaRef(Task, {
+          title: 'NewTask',
+          exclude: ['id']
+        })
+      }
+    }
+  })
+  todo: Omit<Task, 'id'>,
+): Promise<Task>{
+  return this.todoRepository.create(todo)
 }
+
+
+@patch('/todos/{id}')
+  @response(204, {
+    description: 'Todo PATCH success',
+  })
+  async updateById(
+    @param.path.number('id') id: number,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Task, {partial: true}),
+        },
+      },
+    })
+    todo: Task,
+  ): Promise<void> {
+    await this.todoRepository.updateById(id, todo);
+  }
+
+  @del('/todos/{id}')
+  @response(204, {
+    description: 'Todo DELETE success',
+  })
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
+    await this.todoRepository.deleteById(id);
+  }
+
+
+}
+
