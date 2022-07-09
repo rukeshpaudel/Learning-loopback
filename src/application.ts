@@ -10,6 +10,28 @@ import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
 
+/*-------------Authentication--------------------*/
+import { AuthenticationComponent } from '@loopback/authentication';
+import { JWTAuthenticationComponent, 
+  SECURITY_SCHEME_SPEC,
+   UserServiceBindings } from '@loopback/authentication-jwt';
+import { DbDataSource } from './datasources/db1.datasource';
+
+export class TodoListApp extends BootMixin(
+  ServiceMixin(RepositoryMixin(RestApplication))
+)
+{
+  constructor(options: ApplicationConfig={}){
+    super()
+
+    this.component(AuthenticationComponent);
+    
+    this.component(JWTAuthenticationComponent);
+    this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
+  }
+}
+
+
 export {ApplicationConfig};
 
 export class Todo1Application extends BootMixin(
