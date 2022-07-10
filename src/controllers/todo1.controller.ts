@@ -21,12 +21,15 @@ import {
 
 import {Task} from '../models/todo1.model';
 import {TodoRepository} from '../repositories/todo1.repository';
+import { authenticate } from '@loopback/authentication';
 
 export class TodoController {
   constructor(
     @repository(TodoRepository)
     public todoRepository: TodoRepository,
   ) {}
+
+  @authenticate('jwt')
 
   @get('/todos/count')
   @response(200, {
@@ -123,6 +126,7 @@ async create(
     await this.todoRepository.deleteById(id);
   }
 
+  
 
 }
 
