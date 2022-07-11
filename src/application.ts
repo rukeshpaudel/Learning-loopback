@@ -17,20 +17,6 @@ import { JWTAuthenticationComponent,
    UserServiceBindings } from '@loopback/authentication-jwt';
 import { DbDataSource } from './datasources/db1.datasource';
 
-export class TodoListApp extends BootMixin(
-  ServiceMixin(RepositoryMixin(RestApplication))
-)
-{
-  constructor(options: ApplicationConfig={}){
-    super()
-
-    this.component(AuthenticationComponent);
-    
-    this.component(JWTAuthenticationComponent);
-    this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
-  }
-}
-
 
 export {ApplicationConfig};
 
@@ -51,6 +37,11 @@ export class Todo1Application extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
+    
+    this.component(AuthenticationComponent);
+    
+    this.component(JWTAuthenticationComponent);
+    this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here

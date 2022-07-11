@@ -1,6 +1,8 @@
 {
   "ids": {
-    "Task": 8
+    "Task": 8,
+    "User": 6,
+    "UserCredentials": 4
   },
   "models": {
     "Task": {
@@ -10,6 +12,16 @@
       "4": "{\"task_name\":\"string\",\"task_desc\":\"string\",\"id\":4,\"isComplete\":true}",
       "5": "{\"id\":5,\"task_name\":\"string\",\"task_desc\":\"string\",\"isComplete\":true}",
       "7": "{\"task_name\":\"Ahahha\",\"task_desc\":\"huhhh\",\"isComplete\":true,\"id\":7}"
+    },
+    "User": {
+      "rukesh": "{\"id\":\"rukesh\",\"realm\":\"rukesh\",\"username\":\"rukesh\",\"email\":\"rukeshpaudel@gmail.com\",\"emailVerified\":true,\"verificationToken\":\"string\",\"additionalProp1\":{}}",
+      "rukeshpaudel": "{\"id\":\"rukeshpaudel\",\"realm\":\"rukeshpaudel\",\"username\":\"rukeshpaudel\",\"email\":\"rukeshpaudel@gmail.com\",\"emailVerified\":true,\"verificationToken\":\"string\",\"additionalProp1\":{}}",
+      "rukeshpaudel1": "{\"id\":\"rukeshpaudel1\",\"realm\":\"rukeshpaudel\",\"username\":\"rukeshpaudel\",\"email\":\"rukesh@gmail.com\",\"emailVerified\":true,\"verificationToken\":\"string\",\"additionalProp1\":{}}"
+    },
+    "UserCredentials": {
+      "c10b0fce-d39c-42bf-986d-c0ee961b6db7": "{\"id\":\"c10b0fce-d39c-42bf-986d-c0ee961b6db7\",\"password\":\"$2a$10$C2Rx5Y2.QMLVqCAJr0tYWOtF1x5/1IE.QMPLaZUaHW6.MPem6YS7q\",\"userId\":\"rukesh\"}",
+      "904a7827-8f8c-44fa-be24-91d1472ceac5": "{\"id\":\"904a7827-8f8c-44fa-be24-91d1472ceac5\",\"password\":\"$2a$10$bQqjHh1rSN5VGfQ8.sz8K.Rt1X/5fUhILC32o7YvlsuDXDP7rlzxK\",\"userId\":\"rukeshpaudel\"}",
+      "249bd5e3-1960-4ffd-b07e-b4aa17ac9b96": "{\"id\":\"249bd5e3-1960-4ffd-b07e-b4aa17ac9b96\",\"password\":\"$2a$10$va9EYGONoLCKS5D/SzOIDOR4z7L8rUMoXAYKFlpgoAC/Eqz8w3WrO\",\"userId\":\"rukeshpaudel1\"}"
     }
   }
 }
