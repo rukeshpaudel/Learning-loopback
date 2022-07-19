@@ -20,7 +20,7 @@ import {SecurityBindings, securityId, UserProfile} from '@loopback/security';
 import {genSalt, hash} from 'bcryptjs';
 import _ from 'lodash';
 
-@model()
+//@model()
 export class NewUserRequest extends User {
   @property({
     type: 'string',
